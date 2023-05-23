@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:url value="/NewCompany" var="linkForm"></c:url>
+<c:url value="/entry?action=NewCompany" var="linkForm"></c:url>
 <!DOCTYPE html>
 <html>
     <head>

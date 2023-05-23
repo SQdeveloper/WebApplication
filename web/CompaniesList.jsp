@@ -16,8 +16,8 @@
         <ul>
             <c:forEach items="${companies}" var="cp">
                 <li>${cp.name} - ${cp.date}
-                    <a href="UpdateFormCompany?id=${cp.id}" > update</a>
-                    <a href="RemoveCompany?id=${cp.id}"> remove </a>
+                    <a href="entry?action=UpdateForm&id=${cp.id}" > update</a>
+                    <a href="entry?action=RemoveCompany&id=${cp.id}"> remove </a>
                 </li>
             </c:forEach>
         </ul>
