@@ -5,6 +5,7 @@
 package com.alura.db;
 
 import com.alura.models.Company;
+import com.alura.models.User;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -18,6 +19,7 @@ public class DB {
     
     private static int number = 0;
     private static List<Company> companies = new ArrayList<>();
+    private static List<User> users = new ArrayList<>();
     
     static {
         Company company1 = new Company("alura", LocalDate.now());
@@ -34,10 +36,22 @@ public class DB {
         DB.companies.add(company2);
         DB.companies.add(company3);
         DB.companies.add(company4);
+        
+        User us1 = new User("jefferson", "123");
+        User us2 = new User("jeff", "122");
+        User us3 = new User("carlos", "112");
+        
+        DB.users.add(us1);
+        DB.users.add(us2);
+        DB.users.add(us3);
     }
     
     public static List<Company> getCompanies() {
         return companies;
+    }
+    
+    public static List<User> getUsers() {
+        return users;
     }
 
     public void addCompany(Company company) {
@@ -64,5 +78,17 @@ public class DB {
                 it.remove();                                                
             }
         }
+    }
+    
+    public User exitUser(String user, String password) {
+        for(User us : DB.users) {
+            Boolean value = us.isEqual(user, password);
+            
+            if(value == true) {
+                return us;
+            }
+        }
+        
+        return null;
     }
 }

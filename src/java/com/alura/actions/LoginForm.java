@@ -4,29 +4,20 @@
  */
 package com.alura.actions;
 
-import com.alura.db.DB;
-import com.alura.models.Company;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.time.LocalDate;
 
 /**
  *
  * @author PC
  */
-public class NewCompany implements Action {
+public class LoginForm implements Action {
     
+    @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String name = request.getParameter("name");
-        String paramDate = request.getParameter("date");
-        LocalDate date = LocalDate.parse(paramDate);
-
-        Company company = new Company(name, date);
-        DB db = new DB();
-        db.addCompany(company);
-
-        return "redirect:entry?action=CompanyList";
+        
+        return "forward:LoginForm.jsp";
     }
 }

@@ -4,13 +4,7 @@
  */
 package com.alura.servlets;
 
-import com.alura.actions.CompanyList;
-import com.alura.actions.NewCompany;
-import com.alura.actions.Remove;
-import com.alura.actions.Update;
-import com.alura.actions.UpdateForm;
-import com.alura.db.DB;
-import com.alura.models.Company;
+import com.alura.actions.Action;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -18,7 +12,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
+
 /**
  *
  * @author PC
@@ -29,23 +23,27 @@ public class uniqueEntryServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String action = request.getParameter("action");
+        String className = request.getParameter("action");        
         
-        if(action.equals("RemoveCompany")){
-            Remove nc = new Remove();
-            nc.execute(request, response);
-        }else if(action.equals("UpdateCompany")) {
-            Update uc = new Update();
-            uc.execute(request, response);
-        }else if(action.equals("NewCompany")) {
-            NewCompany nc = new NewCompany();
-            nc.execute(request, response);
-        }else if(action.equals("CompanyList")) {
-            CompanyList cl = new CompanyList();
-            cl.execute(request, response);
-        }else if(action.equals("UpdateForm")) {
-            UpdateForm uf = new UpdateForm();
-            uf.execute(request, response);
+        className = "com.alura.actions." + className;        
+        String name = null;
+        
+        try {
+            Class gClass = Class.forName(className);
+            Object obj = gClass.newInstance();
+            Action action = (Action) obj;
+            name = action.execute(request, response);
+        }catch(ServletException | IllegalAccessException | InstantiationException | ClassNotFoundException e) {
+            throw new ServletException(e);
+        }
+              
+        String[] tipeAndDirection = name.split(":");
+        
+        if(tipeAndDirection[0].equals("forward")) {
+            RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/" + tipeAndDirection[1]);           
+            rd.forward(request, response);   
+        }else {
+            response.sendRedirect(tipeAndDirection[1]);  
         }
     }
 }

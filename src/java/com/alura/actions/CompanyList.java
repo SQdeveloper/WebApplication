@@ -17,13 +17,13 @@ import java.util.List;
  *
  * @author PC
  */
-public class CompanyList {
+public class CompanyList implements Action {
     
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Company> companies = DB.getCompanies();            
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Company> companies = DB.getCompanies();                 
 
-        RequestDispatcher rd = request.getRequestDispatcher("CompaniesList.jsp");           
         request.setAttribute("companies", companies);
-        rd.forward(request, response);   
+        
+        return "forward:CompaniesList.jsp";                
     }
 }

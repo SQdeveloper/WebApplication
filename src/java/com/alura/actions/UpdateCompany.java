@@ -16,9 +16,9 @@ import java.time.LocalDate;
  *
  * @author PC
  */
-public class Update {
+public class UpdateCompany implements Action {
     
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String paramId = request.getParameter("id");
         int id = Integer.parseInt(paramId);
         String name = request.getParameter("name");
@@ -29,6 +29,6 @@ public class Update {
         company.setName(name);
         company.setDate(date);                        
 
-        response.sendRedirect("entry?action=CompanyList");
+        return "redirect:entry?action=CompanyList";
     }
 }
