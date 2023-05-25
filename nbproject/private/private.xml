@@ -4,11 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/PC/Documents/NetBeansProjects/WebApplication/src/java/com/alura/servlets/uniqueEntryServlet.java</file>
-            <file>file:/C:/Users/PC/Documents/NetBeansProjects/WebApplication/src/java/com/alura/db/DB.java</file>
-            <file>file:/C:/Users/PC/Documents/NetBeansProjects/WebApplication/web/WEB-INF/view/LoginForm.jsp</file>
-            <file>file:/C:/Users/PC/Documents/NetBeansProjects/WebApplication/src/java/com/alura/actions/RemoveCompany.java</file>
             <file>file:/C:/Users/PC/Documents/NetBeansProjects/WebApplication/src/java/com/alura/actions/LoginForm.java</file>
             <file>file:/C:/Users/PC/Documents/NetBeansProjects/WebApplication/src/java/com/alura/actions/Login.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/WebApplication/src/java/com/alura/servlets/AuthorizationFilter.java</file>
         </group>
     </open-files>
 </project-private>

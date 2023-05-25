@@ -11,6 +11,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
@@ -22,9 +23,9 @@ public class uniqueEntryServlet extends HttpServlet {
 
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String className = request.getParameter("action");        
-        
+                
+        String className = request.getParameter("action");                                
+               
         className = "com.alura.actions." + className;        
         String name = null;
         

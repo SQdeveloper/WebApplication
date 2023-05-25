@@ -4,8 +4,6 @@
  */
 package com.alura.actions;
 
-import com.alura.db.DB;
-import com.alura.models.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -16,24 +14,13 @@ import java.io.IOException;
  *
  * @author PC
  */
-public class Login implements Action {        
-
+public class Logout implements Action {
+    
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        String user = request.getParameter("user");
-        String password = request.getParameter("password");
-        
-        DB db = new DB();        
-        
-        User us = db.exitUser(user, password);
-        
-        if(us != null) {
-            HttpSession session = request.getSession();
-            session.setAttribute("user", us);
-            return "redirect:entry?action=CompanyList";
-        }
-        
+        HttpSession session = request.getSession();
+        session.invalidate();
         return "redirect:entry?action=LoginForm";
     }
 }

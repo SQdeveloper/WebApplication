@@ -13,6 +13,9 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <c:import url="Logout-parcial.jsp"></c:import>
+        <h2>User: ${user.login}</h2>
+        
         <ul>
             <c:forEach items="${companies}" var="cp">
                 <li>${cp.name} - ${cp.date}

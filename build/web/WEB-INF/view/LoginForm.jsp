@@ -13,7 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-    <body>
+    <body>        
         <form method="post" action="${linkForm}">
             <label>user:</label>
             <input type="text" name="user"/>

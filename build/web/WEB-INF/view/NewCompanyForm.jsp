@@ -14,6 +14,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <c:import url="Logout-parcial.jsp"></c:import>
         <form method="post" action="${linkForm}">
             <label>Name:</label>
             <input type="text" name="name"/>
